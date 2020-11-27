@@ -1,0 +1,30 @@
+/deep/.card-menu {
+  text-align: center;
+}
+
+/deep/ .card-menu .ui-card-title {
+  border-radius: 10px;
+  padding: 15px 0;
+  color: #fff;
+}
+
+/deep/ .card-menu-1 .ui-card-title {
+  background-color: #2196f3;
+}
+
+/deep/ .card-menu-2 .ui-card-title {
+  background-color: #ffc107;
+}
+
+/deep/ .card-menu-3 .ui-card-title {
+  background-color: #4caf50;
+}
+
+.bemvindo-titulo {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.bemvindo-subtitulo {
+  font-size: 1.5em;
+}

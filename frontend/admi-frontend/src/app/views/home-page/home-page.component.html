@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="p-grid p-dir-col" *ngIf="usuarioAdmin">
+  <div class="p-col-12" style="text-align: center;">
+    <p class="bemvindo-titulo">Bem-Vindo!</p>
+    <p class="bemvindo-subtitulo">O que deseja fazer?</p>
+  </div>
+  <div class="p-col">
+    <div class="p-grid">
+      <div class="p-col-12 p-lg-4">
+          <p-card title="Membros" styleClass="card-menu card-menu-1">
+            <div class="p-grid p-dir-col">
+            <div class="p-col"><button pButton label="Cadastrar novo membro" icon="pi pi-user-plus" iconPos="right" (click)="irCadMembro()"></button></div>
+            <div class="p-col"><button pButton label="Lista de membros" icon="pi pi-list" iconPos="right" (click)="irListaMembro()"></button></div>
+          </div>
+          </p-card>
+        </div>
+        <div class="p-col-12 p-lg-4">
+          <p-card title="Usuários" styleClass="card-menu card-menu-2">
+              <div class="p-grid p-dir-col">
+                <div class="p-col"><button pButton label="Cadastrar novo usuário" class="ui-button-warning" icon="pi pi-user-plus" iconPos="right" (click)="irCadUsuario()"></button></div>
+                <div class="p-col"><button pButton label="Lista de usuários" class="ui-button-warning" icon="pi pi-list" iconPos="right" (click)="irListaUsuario()"></button></div>
+              </div>
+          </p-card>
+        </div>
+        <div class="p-col-12 p-lg-4">
+          <p-card title="Relatórios" styleClass="card-menu card-menu-3">
+              <div class="p-grid p-dir-col">
+                <div class="p-col"><button pButton label="Aniversariantes do mês" class="ui-button-success" icon="pi pi-calendar" iconPos="right" (click)="irAniversarioRelatorio()"></button></div>
+              </div>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="p-grid p-dir-col" *ngIf="!usuarioAdmin">
+  <div class="p-col-12" style="text-align: center;">
+    <p class="bemvindo-titulo">Bem-Vindo!</p>
+    <p class="bemvindo-subtitulo">O que deseja fazer?</p>
+  </div>
+  <div class="p-col">
+    <div class="p-grid">
+      <div class="p-col-12 p-lg-4 p-lg-offset-2">
+          <p-card title="Membros" styleClass="card-menu card-menu-1">
+            <div class="p-grid p-dir-col">
+            <div class="p-col"><button pButton label="Cadastrar novo membro" icon="pi pi-user-plus" iconPos="right" (click)="irCadMembro()"></button></div>
+            <div class="p-col"><button pButton label="Lista de membros" icon="pi pi-list" iconPos="right" (click)="irListaMembro()"></button></div>
+          </div>
+          </p-card>
+        </div>
+        <div class="p-col-12 p-lg-4">
+          <p-card title="Relatórios" styleClass="card-menu card-menu-3">
+              <div class="p-grid p-dir-col">
+                <div class="p-col"><button pButton label="Aniversariantes do mês" class="ui-button-success" icon="pi pi-calendar" iconPos="right" (click)="irAniversarioRelatorio()"></button></div>
+              </div>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</div>

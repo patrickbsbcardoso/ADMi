@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="p-grid p-dir-col">
+  <div class="p-col-12" style="text-align: center;">
+    <p class="titulo">Informações do Membro</p>
+  </div>
+  <div class="p-col">
+    <div class="p-grid p-dir-col p-justify-center">
+      <div class="p-col-12 p-lg-6 p-lg-offset-3">
+        <p-card>
+          <div class="info">
+              <p-table [value]="infoMembro">
+                  <ng-template pTemplate="body" let-campo>
+                      <tr>
+                          <td class="campos-tabela"><strong>{{campo.label}}</strong></td>
+                          <td>{{campo.value}}</td>
+                      </tr>
+                  </ng-template>
+              </p-table>
+          </div>
+        </p-card>
+        <br>
+        <div class="p-grid">
+            <div class="p-col-12 p-lg-2">
+              <button type="button" label="Voltar" class="ui-button-primary tela-pequena" pButton icon="pi pi-arrow-left"
+                iconPos="right" (click)="voltarLista();"></button>
+            </div>
+            <div class="p-col-12 p-lg-2">
+              <button type="button" label="Imprimir" class="ui-button-success tela-pequena" pButton icon="pi pi-print"
+                iconPos="right" (click)="exportPDF()"></button>
+            </div>
+          </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

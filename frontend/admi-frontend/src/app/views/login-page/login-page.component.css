@@ -1,0 +1,46 @@
+.logo-bg {
+  width: 25%;
+  height: auto;
+}
+
+.centralizado {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.background {
+  position: absolute;
+  display: block;
+  background-image: url("/assets/img/login-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .logo-bg {
+    width: 70%;
+    height: auto;
+  }
+}
+
+/deep/ .ui-float-label .float-input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0 none;
+}
+
+/deep/.carregando-dialog>.ui-dialog>.ui-dialog-content {
+  height: 9em;
+}
+/deep/.carregando-spinner {
+  margin-left: 1.8em;
+}
+/deep/.carregando-spinner>.ui-progress-spinner {
+  margin-top: 1.28em;
+}

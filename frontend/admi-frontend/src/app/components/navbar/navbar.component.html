@@ -1,0 +1,9 @@
+<div class="navbar">
+  <img src="assets/img/logo-sm.png">
+  <i class="menu-button pi pi-bars" (click)="abreSideMenu()"></i>
+  <p-sidebar [(visible)]="visivel" position="left">
+    <h1>Menu</h1>
+    <p-menu #menu styleClass="menu-lateral" [model]="itens"></p-menu>
+  </p-sidebar>
+</div>
+<div class="espaco"></div>

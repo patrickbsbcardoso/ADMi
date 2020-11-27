@@ -1,0 +1,16 @@
+@media screen and (max-width: 992px) {
+  .tela-pequena {
+    width: 100% !important;
+  }
+}
+
+
+/deep/.carregando-dialog>.ui-dialog>.ui-dialog-content {
+  height: 9em;
+}
+/deep/.carregando-spinner {
+  margin-left: 1.8em;
+}
+/deep/.carregando-spinner>.ui-progress-spinner {
+  margin-top: 1.28em;
+}

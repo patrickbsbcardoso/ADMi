@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<div class="p-grid p-dir-col">
+  <div class="p-col-12" style="text-align: center;">
+    <p class="titulo">Lista dos Aniversariantes</p>
+  </div>
+  <div class="p-col-12 p-lg-8 p-lg-offset-2">
+    <p-card>
+      <br>
+          <div class="p-grid">
+              <div class="p-col-12 p-lg-1">
+                  <button type="button" label="Voltar" class="ui-button-primary tela-pequena" pButton icon="pi pi-arrow-left"
+                    iconPos="right" (click)="voltaHome();"></button>
+                </div>
+
+            <div class="p-col-12 p-lg-2 p-lg-offset-9">
+                <span class="ui-float-label">
+                    <p-dropdown class="dropdown" class="tela-pequena dropdown" [options]="this.meses" [(ngModel)]="mesSelecionado" (onChange)="getAniversariantes()" ></p-dropdown>
+                    <label for="float-input">Escolha o mês</label>
+                  </span>
+            </div>
+
+          </div>
+        <div class="p-grid">
+          <div class="p-col">
+            <p-table [value]="aniversariantes" [columns]="colunas" (onRowSelect)="habilitaBotao = false;" (onRowUnselect)="habilitaBotao = true;"
+             [scrollable]="true" scrollHeight="400px" #tabela>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th *ngFor="let coluna of colunas">
+                    {{coluna.cabecalho}}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-membro>
+                <tr [pSelectableRow]='membro'>
+                  <td *ngFor="let coluna of colunas">
+                    {{membro[coluna.campo]}}
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td [attr.colspan]="colunas.length">Não há aniversariantes para esse mês</td>
+                  </tr>
+                </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+<p-dialog [header]="cabecalhoPopUp" [(visible)]="dialogoPopUp" [width]="300" [modal]="true" [closable]="false" [closeOnEscape]="true">
+  <span>{{ msgPopUp }}</span>
+  <p-footer>
+    <button pButton class="ui-button-secondary" label="Ok" (click)="dialogoPopUp=false"></button>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="carregando" class="carregando-dialog" [modal]="true" [closable]="false">
+  <p-progressSpinner class="carregando-spinner" [style]="{width: '70px', height: '70px'}" strokeWidth="6"></p-progressSpinner>
+</p-dialog>

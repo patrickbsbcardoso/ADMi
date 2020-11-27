@@ -1,0 +1,52 @@
+.navbar{
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 60px;
+  background-color: #212121;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.navbar h1{
+  color: #212121;
+}
+
+.navbar img{
+  float: right;
+  height: 100%;
+  width: auto;
+  padding: 10px;
+  margin-right: 50px;
+}
+
+.navbar .menu-button{
+  position: fixed;
+  float: left;
+  color: #fff !important;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 30px !important;
+  margin-top: 9px;
+  margin-left: 10px;
+}
+/deep/ .menu-lateral{
+  color: #212121 !important;
+}
+
+/deep/ .menu-lateral:nth-child(1){
+  width: 100% !important;
+  border: 0 !important;
+}
+
+.espaco{
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/deep/ p-tieredmenusub>ul.ui-submenu-list {
+  width: fit-content !important;
+}

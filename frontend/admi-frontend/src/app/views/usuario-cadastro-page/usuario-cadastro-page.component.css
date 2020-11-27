@@ -1,0 +1,73 @@
+/deep/ .ui-float-label>input:focus ~ label,
+.ui-float-label>input.ui-state-filled ~ label,
+.ui-float-label>.ui-inputwrapper-focus ~ label,
+.ui-float-label>.ui-inputwrapper-filled ~ label {
+  font-size: 14px;
+}
+
+/deep/ .ui-float-label>label {
+  font-size: 14px;
+  top: -.75em;
+
+}
+
+/deep/ .ui-float-label {
+  margin-top: 1em !important;
+  margin-bottom: 0.3em !important;
+}
+
+/deep/ .ui-inputtext {
+  width: 100%;
+}
+
+/deep/ .ui-dropdown {
+  width: 100% !important;
+}
+
+/deep/ .ui-calendar:first-child {
+  width: 100%;
+}
+
+/deep/ .p-grid .botoes{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/deep/ .ui-float-label:first-child>.ng-dirty.ng-invalid ~ label {
+  color: #a80000;
+}
+
+/deep/ .ui-float-label:first-child>.ng-valid.ui-state-filled, /deep/ .ui-float-label>.ng-valid.ui-inputwrapper-filled>.ui-inputtext {
+  border-color: #007ad9;
+}
+/deep/ .ui-float-label:first-child>.ng-valid.ui-state-filled ~ label {
+  color: #007ad9;
+}
+
+/deep/ .ui-float-label>.ng-valid.ui-inputwrapper-filled>.ui-dropdown {
+  border-color: #007ad9;
+}
+
+.dica-erro {
+  font-size: 0.95em;
+  color: #a80000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 992px) {
+  .tela-pequena {
+    width: 100% !important;
+  }
+}
+
+
+/deep/.carregando-dialog>.ui-dialog>.ui-dialog-content {
+  height: 9em;
+}
+/deep/.carregando-spinner {
+  margin-left: 1.8em;
+}
+/deep/.carregando-spinner>.ui-progress-spinner {
+  margin-top: 1.28em;
+}

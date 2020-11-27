@@ -1,0 +1,22 @@
+.info p{
+  color: #212121;
+}
+
+
+/deep/ .p-grid .botoes{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/deep/ .campos-tabela {
+  width: 200px;
+}
+
+@media screen and (max-width: 992px) {
+  .tela-pequena {
+    width: 100% !important;
+  }
+  /deep/ .campos-tabela {
+    width: auto;
+  }
+}

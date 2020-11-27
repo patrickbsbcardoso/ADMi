@@ -1,0 +1,25 @@
+/deep/ .dropdown>.ui-dropdown{
+  width: 100% !important;
+}
+
+
+@media screen and (max-width: 992px) {
+  .tela-pequena {
+    width: 100% !important;
+  }
+
+  /deep/ .ui-float-label{
+    margin-top: 1.5em;
+  }
+
+}
+
+/deep/.carregando-dialog>.ui-dialog>.ui-dialog-content {
+  height: 9em;
+}
+/deep/.carregando-spinner {
+  margin-left: 1.8em;
+}
+/deep/.carregando-spinner>.ui-progress-spinner {
+  margin-top: 1.28em;
+}

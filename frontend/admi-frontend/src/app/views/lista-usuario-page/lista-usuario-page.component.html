@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="p-grid p-dir-col">
+  <div class="p-col-12" style="text-align: center;">
+    <p class="titulo">Lista dos Usuários</p>
+  </div>
+  <div class="p-col-12 p-lg-10 p-lg-offset-1">
+    <p-card>
+          <div class="p-grid">
+              <div class="p-col-12 p-md-2 p-lg-1">
+                  <button type="button" label="Voltar" class="ui-button-primary tela-pequena" pButton icon="pi pi-arrow-left"
+                    iconPos="right" (click)="voltaHome();"></button>
+                </div>
+            <div class="p-col-12 p-md-2 p-lg-1">
+                <button type="button" label="Novo" class="ui-button-success tela-pequena" pButton icon="pi pi-plus"
+                iconPos="right" (click)="irCadastroUsuario();"></button>
+            </div>
+            <div class="p-col-12 p-md-2 p-lg-1">
+                <button type="button" label="Editar" class="ui-button-warning tela-pequena" pButton icon="pi pi-pencil"
+                iconPos="right" [disabled]="habilitaBotao" (click)="irEditaUsuario()"></button>
+            </div>
+            <div class="p-col-12 p-md-2 p-lg-1">
+                <button type="button" label="Excluir" class="ui-button-danger tela-pequena" pButton icon="pi pi-trash"
+                iconPos="right" [disabled]="habilitaBotao" (click)="excluiUsuario()"></button>
+            </div>
+            <div class="p-col-12 p-md-12 p-lg-2 p-lg-offset-5">
+                <div class="ui-inputgroup tela-pequena">
+                    <span class="ui-inputgroup-addon">
+                        <i class="pi pi-search"></i>
+                    </span>
+                    <input type="text" class="tela-pequena" pInputText (input)="tabela.filterGlobal($event.target.value, 'contains')">
+                </div>
+            </div>
+
+          </div>
+        <div class="p-grid">
+          <div class="p-col">
+            <p-table [value]="usuarios" [columns]="colunas" selectionMode="single" [(selection)]="linhaSelecionada"
+            (onRowSelect)="habilitaBotao = false;" (onRowUnselect)="habilitaBotao = true;" [scrollable]="true" scrollHeight="400px"
+            [globalFilterFields]="['usuario', 'role']" #tabela>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th *ngFor="let coluna of colunas">
+                    {{coluna.cabecalho}}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-usuario>
+                <tr [pSelectableRow]='usuario'>
+                  <td *ngFor="let coluna of colunas">
+                    {{usuario[coluna.campo]}}
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+<p-confirmDialog width="300"></p-confirmDialog>
+
+<p-dialog [header]="cabecalhoPopUp" [(visible)]="dialogoPopUp" [width]="300" [modal]="true" [closable]="false" [closeOnEscape]="true">
+  <span>{{ msgPopUp }}</span>
+  <p-footer>
+    <button pButton class="ui-button-secondary" label="Ok" (click)="dialogoPopUp=false"></button>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="carregando" class="carregando-dialog" [modal]="true" [closable]="false">
+  <p-progressSpinner class="carregando-spinner" [style]="{width: '70px', height: '70px'}" strokeWidth="6"></p-progressSpinner>
+</p-dialog>

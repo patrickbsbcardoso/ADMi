@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<div class="p-grid p-dir-col">
+  <div class="p-col-12" style="text-align: center;">
+    <p class="titulo">Cadastro de Usuário</p>
+  </div>
+  <div class="p-col">
+    <form [formGroup]="formUsuario" (ngSubmit)="onSubmit();">
+      <div class="p-grid p-dir-col p-justify-center">
+        <div class="p-col-12 p-lg-8 p-lg-offset-2">
+          <p-card title="Novo Usuário">
+            <div class="p-grid">
+              <div class="p-col-12 p-md">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" formControlName="usuario" pInputText />
+                  <label for="float-input">Usuário*</label>
+                </span>
+              </div>
+              <div class="p-col-12 p-lg">
+                <span class="ui-float-label">
+                  <input id="float-input" type="password" formControlName="senha" pPassword promptLabel="Digite uma senha" weakLabel="Fraca" mediumLabel="Média" strongLabel="Forte"/>
+                  <label for="float-input">Senha*</label>
+                </span>
+                <label class="dica-erro" *ngIf="
+                  formUsuario.get('senha').errors!=null
+                  && formUsuario.get('senha').errors.minlength
+                  && formUsuario.get('senha').dirty">A senha precisa ter no mínimo 8 caracteres</label>
+              </div>
+              <div class="p-col-12 p-md">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.tipoUsuario" formControlName="role"></p-dropdown>
+                  <label for="float-input">Tipo de usuário*</label>
+                </span>
+              </div>
+            </div>
+          </p-card>
+        </div>
+        <div class="p-grid botoes">
+          <div class="p-lg-8 p-lg-offset-2 p-col-12" style="@media screen and (min-width: 576px) {margin-bottom: -1.3em;}">
+            <label style="color:#fff; font-style: italic; font-size: 0.9em;" class="tela-pequena">Preencha todos os campos que possuam *</label>
+          </div>
+        </div>
+        <div class="p-grid botoes">
+          <div class="p-lg-1 p-lg-offset-2 p-col-12">
+            <button type="button" label="Voltar" class="ui-button-primary tela-pequena" pButton icon="pi pi-arrow-left"
+              iconPos="right" (click)="voltaHome();"></button>
+          </div>
+          <div class="p-lg-1 p-lg-offset-5 p-col-12">
+            <button type="submit" label="Cadastrar" class="ui-button-success tela-pequena" pButton icon="pi pi-save"
+              iconPos="right"></button>
+          </div>
+          <div class="p-lg-1 p-col-12">
+            <button type="button" label="Limpar" class="ui-button-warning tela-pequena" pButton icon="pi pi-times"
+              iconPos="right" (click)="resetaForm()"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<p-dialog [header]="cabecalhoPopUp" [(visible)]="dialogoPopUp" [width]="300" [modal]="true" [closable]="false" [closeOnEscape]="true">
+  <span>{{ msgPopUp }}</span>
+  <p-footer>
+    <button pButton class="ui-button-secondary" label="Ok" (click)="dialogoPopUp=false"></button>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="carregando" class="carregando-dialog" [modal]="true" [closable]="false">
+  <p-progressSpinner class="carregando-spinner" [style]="{width: '70px', height: '70px'}" strokeWidth="6"></p-progressSpinner>
+</p-dialog>

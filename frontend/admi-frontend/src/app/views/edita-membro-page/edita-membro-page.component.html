@@ -1,0 +1,320 @@
+<app-navbar></app-navbar>
+<div class="p-grid p-dir-col">
+  <div class="p-col-12" style="text-align: center;">
+    <p class="titulo">Editar Informações do Membro</p>
+  </div>
+  <div class="p-col">
+    <form [formGroup]="formMembro">
+      <div class="p-grid p-dir-col p-justify-center">
+        <div class="p-sm-12 p-lg-8 p-lg-offset-2">
+          <p-card title="Informações Pessoais do Membro">
+            <div class="p-grid">
+              <div class="p-lg-12 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" formControlName="nome" pInputText />
+                  <label for="float-input">Nome Completo*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.sexo" formControlName="sexo"></p-dropdown>
+                  <label for="float-input">Sexo*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-calendar dateFormat="dd/mm/yy" [locale]="this.br" [showIcon]="true" [yearNavigator]="true"
+                    [yearRange]="'1900:'+anoAtual" [monthNavigator]="true" formControlName="data_nasc"></p-calendar>
+                  <label for="float-input">Data de Nascimento*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-inputMask id="float-input" mask="99.999.999-9" formControlName="rg"></p-inputMask>
+                  <label for="float-input">RG</label>
+                </span>
+                <label class="dica-erro" *ngIf="
+                  formMembro.get('rg').errors!=null
+                  && formMembro.get('rg').errors.rgInvalido
+                  && formMembro.get('rg').dirty">RG inválido</label>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-inputMask id="float-input" mask="999.999.999-99" formControlName="cpf"></p-inputMask>
+                  <label for="float-input">CPF</label>
+                </span>
+                <label class="dica-erro" *ngIf="
+                  formMembro.get('cpf').errors!=null
+                  && formMembro.get('cpf').errors.cpfInvalido
+                  && formMembro.get('cpf').dirty">CPF inválido</label>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.escolaridade" formControlName="escolaridade"></p-dropdown>
+                  <label for="float-input">Grau de Escolaridade*</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="profissao"/>
+                  <label for="float-input">Profissão</label>
+                </span>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText pKeyFilter="email" formControlName="email"/>
+                  <label for="float-input">E-mail</label>
+                </span>
+                <label class="dica-erro" *ngIf="
+                  formMembro.get('email').errors!=null
+                  && formMembro.get('email').errors.email
+                  && formMembro.get('email').dirty">E-mail inválido</label>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <p-inputMask id="float-input" mask="(99)9999-9999" formControlName="tel_residencial"></p-inputMask>
+                  <label for="float-input">Telefone Residencial</label>
+                </span>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <p-inputMask id="float-input" mask="(99)99999-9999" formControlName="tel_celular"></p-inputMask>
+                  <label for="float-input">Telefone Celular</label>
+                </span>
+              </div>
+              <div class="p-lg-2 p-col-12">
+                <span class="ui-float-label">
+                  <p-inputMask id="float-input" mask="99999-999" formControlName="cep" (onBlur)="pesquisaCep()"></p-inputMask>
+                  <label for="float-input">CEP*</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="endereco"/>
+                  <label for="float-input">Endereço*</label>
+                </span>
+              </div>
+              <div class="p-lg-2 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText pKeyFilter="num" formControlName="num_casa"/>
+                  <label for="float-input">Número*</label>
+                </span>
+              </div>
+              <div class="p-lg-2 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="complemento"/>
+                  <label for="float-input">Complemento</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.estados" optionLabel="nome" [(ngModel)]="estadoSelecionado" name="drpdwnEstado" (onChange)="escolheEstado();" formControlName="estado"></p-dropdown>
+                  <label for="float-input">Estado*</label>
+                </span>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.cidades" optionLabel="nome" formControlName="cidade"></p-dropdown>
+                  <label for="float-input">Cidade*</label>
+                </span>
+              </div>
+              <div class="p-lg-5 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="bairro" />
+                  <label for="float-input">Bairro*</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="naturalidade"/>
+                  <label for="float-input">Naturalidade*</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="nacionalidade"/>
+                  <label for="float-input">Nacionalidade*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.estadoCivil" formControlName="estado_civil" (onChange)="escolheEstadoCivil()"></p-dropdown>
+                  <label for="float-input">Estado Civil*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-calendar dateFormat="dd/mm/yy" [locale]="this.br" [showIcon]="true" [yearNavigator]="true"
+                    [yearRange]="'1900:'+anoAtual" [monthNavigator]="true" formControlName="data_casamento"></p-calendar>
+                  <label for="float-input" #labelDataCasamento>Data do Casamento</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="nome_conjuge"/>
+                  <label for="float-input" #labelNomeConjuge>Nome do Cônjuge</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="nome_pai"/>
+                  <label for="float-input">Nome do Pai*</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="nome_mae"/>
+                  <label for="float-input">Nome da Mãe*</label>
+                </span>
+              </div>
+            </div>
+          </p-card>
+        </div>
+        <div class="p-col-12 p-lg-8 p-lg-offset-2">
+          <p-card title="Informações Eclesiásticas do Membro">
+            <div class="p-grid">
+              <div class="p-lg-2 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.simNao" formControlName="batizado" (onChange)="escolheBatizado()"></p-dropdown>
+                  <label for="float-input">Batizado*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-calendar dateFormat="dd/mm/yy" [locale]="this.br" [showIcon]="true" [yearNavigator]="true"
+                  [yearRange]="'1900:'+anoAtual" [monthNavigator]="true" formControlName="data_batismo"></p-calendar>
+                  <label for="float-input" #labelDataBatismo>Data do Batismo</label>
+                </span>
+              </div>
+              <div class="p-lg-7 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="igreja_batismo"/>
+                  <label for="float-input" #labelIgrejaBatismo>Igreja em que foi batizado</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.simNao" formControlName="batizado_esp_santo" (onChange)="escolheBatizadoEspSnt()"></p-dropdown>
+                  <label for="float-input">Batizado Esp. Santo*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-calendar dateFormat="dd/mm/yy" [locale]="this.br" [showIcon]="true" [yearNavigator]="true"
+                    [yearRange]="'1900:'+anoAtual" [monthNavigator]="true" formControlName="data_btsm_espsnt"></p-calendar>
+                  <label for="float-input" #labelDataBatismoEspSnt>Data Batismo Esp. Santo</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-calendar dateFormat="dd/mm/yy" [locale]="this.br" [showIcon]="true" [yearNavigator]="true"
+                    [yearRange]="'1900:'+anoAtual" [monthNavigator]="true" formControlName="data_entrada"></p-calendar>
+                  <label for="float-input">Data de Entrada*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.motivoEntrada" formControlName="motivo_entrada"></p-dropdown>
+                  <label for="float-input">Motivo da Entrada*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.simNao" formControlName="carta_mudanca"></p-dropdown>
+                  <label for="float-input">Carta de Mudança*</label>
+                </span>
+              </div>
+              <div class="p-lg-3 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.simNao" formControlName="vindo_outra_igreja" (onChange)="escolheOutraIgreja()"></p-dropdown>
+                  <label for="float-input">Vindo de outra Igreja*</label>
+                </span>
+              </div>
+              <div class="p-lg-6 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="nome_outra_igreja"/>
+                  <label for="float-input" #labelNomeOutraIgreja>Qual Igreja</label>
+                </span>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.simNao" formControlName="ja_foi_membro"></p-dropdown>
+                  <label for="float-input">Já foi membro do Ministério*</label>
+                </span>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.cargoMinisterial" formControlName="cargo_ministerial" (onChange)="escolheCargoMinisterial()"></p-dropdown>
+                  <label for="float-input">Cargo Ministerial*</label>
+                </span>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <p-calendar dateFormat="dd/mm/yy" [locale]="this.br" [showIcon]="true" [yearNavigator]="true"
+                    [yearRange]="'1900:'+anoAtual" [monthNavigator]="true" formControlName="data_consagracao"></p-calendar>
+                  <label for="float-input" #labelDataConsagracao>Data da consagração</label>
+                </span>
+              </div>
+              <div class="p-lg-8 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="local_consagracao"/>
+                  <label for="float-input" #labelLocalConsagracao>Igreja/Local da consagração</label>
+                </span>
+              </div>
+              <div class="p-lg-4 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="funcao_eclesiastica"/>
+                  <label for="float-input">Função que exerce</label>
+                </span>
+              </div>
+              <div class="p-lg-2 p-col-12">
+                <span class="ui-float-label">
+                  <p-dropdown [options]="this.simNao" formControlName="curso_teo" (onChange)="escolheCursoTeo()"></p-dropdown>
+                  <label for="float-input">Curso Teológico*</label>
+                </span>
+              </div>
+              <div class="p-lg-10 p-col-12">
+                <span class="ui-float-label">
+                  <input id="float-input" type="text" pInputText formControlName="nome_curso_teo"/>
+                  <label for="float-input" #labelNomeCursoTeo>Qual Curso</label>
+                </span>
+              </div>
+            </div>
+          </p-card>
+        </div>
+        <div class="p-grid botoes">
+          <div class="p-lg-8 p-lg-offset-2 p-col-12" style="@media screen and (min-width: 576px) {margin-bottom: -1.3em;}">
+            <label style="color:#fff; font-style: italic; font-size: 0.9em;" class="tela-pequena">Preencha todos os campos que possuam *</label>
+          </div>
+        </div>
+        <div class="p-grid botoes">
+          <div class="p-lg-1 p-lg-offset-2 p-col-12">
+            <button type="button" label="Voltar" class="ui-button-primary tela-pequena" pButton icon="pi pi-arrow-left"
+              iconPos="right" (click)="voltarLista()"></button>
+          </div>
+          <div class="p-lg-1 p-lg-offset-5 p-col-12">
+            <button type="button" label="Salvar" class="ui-button-success tela-pequena" pButton icon="pi pi-save"
+              iconPos="right" (click)="onSubmit()"></button>
+          </div>
+          <div class="p-lg-1 p-col-12">
+            <button type="button" label="Limpar" class="ui-button-warning tela-pequena" pButton icon="pi pi-times"
+              iconPos="right" (click)="resetaForm()"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<p-dialog [header]="cabecalhoPopUp" [(visible)]="dialogoPopUp" [width]="300" [modal]="true" [closable]="false" [closeOnEscape]="true">
+  <span>{{ msgPopUp }}</span>
+  <p-footer>
+    <button pButton class="ui-button-secondary" label="Ok" (click)="dialogoPopUp=false"></button>
+  </p-footer>
+</p-dialog>
+
+<p-confirmDialog width="300"></p-confirmDialog>
+
+<p-dialog [(visible)]="carregando" class="carregando-dialog" [modal]="true" [closable]="false">
+  <p-progressSpinner class="carregando-spinner" [style]="{width: '70px', height: '70px'}" strokeWidth="6"></p-progressSpinner>
+</p-dialog>
