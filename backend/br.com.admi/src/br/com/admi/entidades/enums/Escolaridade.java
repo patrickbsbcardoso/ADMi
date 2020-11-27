@@ -1,0 +1,17 @@
+package br.com.admi.entidades.enums;
+
+public enum Escolaridade {
+	
+	ANALFABETO,
+	ALFABETIZADO,
+	EF_INCOMPLETO,
+	EF_COMPLETO,
+	EM_INCOMPLETO,
+	EM_COMPLETO,
+	ES_INCOMPLETO,
+	ES_COMPLETO,
+	POS_GRADUADO,
+	MESTRADO,
+	DOUTORADO,
+	POS_DOUTORADO;
+}
